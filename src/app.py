@@ -94,7 +94,7 @@ players_in_cap = list(caps['displayName'].unique())
 for player_in_cap,player_corr in players_dict.items():
 
 
-
+    if len(caps.loc[caps['displayName']==player_in_cap,'displayName'])>0:
          caps.loc[caps['displayName']==player_in_cap,'displayName']=player_corr
          slug = caps[caps['displayName']==player_corr]['slug'].values[0]
          ten_game_average= caps[caps['displayName']==player_corr]['tenGameAverage'].values[0]
