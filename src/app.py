@@ -24,6 +24,7 @@ def optimize_lineup(df, competition,projection_type):
     projection_to_use = 'proj_score'
     if projection_type=='Ceiling':
         projection_to_use = 'proj_ceiling'
+        df = df.sort_values(by='proj_ceiling',ascending=False)
     comp_cap = 120
     comp_players = 4
     if competition=='Contender':
@@ -106,6 +107,7 @@ projections=  pd.concat([total_df,caps],axis=1)
 projections = projections[projections['value'].notna()].fillna(0)
 projections['proj_score'] = (abs(1-projections['id'])*0.4*projections['std'])+projections['value']
 projections['proj_ceiling'] = 0.2*projections['ceiling']+0.8*projections['proj_score']
+projections = projections.sort_values(by='proj_score',ascending=False)
 projections =projections.iloc[:,[1,4,7,8,15,16]]
 projections.columns = [ 'games', 'displayName',
        'tenGameAverage',"slug",'proj_score','proj_ceiling']
