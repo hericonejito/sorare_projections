@@ -115,7 +115,7 @@ projections.columns = [ 'games', 'displayName',
 # df = df.set_index(df['displayName'])
 # df['tenGameAverage'].fillna(0,inplace=True)
 projections['tenGameAverage'] = projections['tenGameAverage'].astype(int)
-
+projections['cap_gain'] = projections['proj_score'] - projections['tenGameAverage']
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = Dash(__name__,external_stylesheets=external_stylesheets)
