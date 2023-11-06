@@ -24,7 +24,7 @@ def optimize_lineup(df, competition,projection_type):
     projection_to_use = 'proj_score'
     if projection_type=='Ceiling':
         projection_to_use = 'proj_ceiling'
-        df = df.sort_values(by='proj_ceiling',ascending=False)
+        temp_df = temp_df.sort_values(by='proj_ceiling',ascending=False)
     comp_cap = 120
     comp_players = 4
     if competition=='Contender':
@@ -67,7 +67,7 @@ def optimize_lineup(df, competition,projection_type):
     print(f"Expected Score : {total_score}")
     return variables
 
-projections_files =['Export_2023_11_05','Export_2023_11_04','Export_2023_11_03']
+projections_files =['Export_2023_11_06','Export_2023_11_08','Export_2023_11_09']
 total_df = pd.DataFrame()
 for file in projections_files:
     df = pd.read_csv(f'data/{file}.csv',index_col=False)
